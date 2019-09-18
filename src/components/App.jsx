@@ -32,7 +32,7 @@ class App extends React.Component {
     };
   }
   componentDidMount() {
-    this.getYouTubeVideos('cute kittens')
+    this.getYouTubeVideos('cute cat');
   }
 
   getYouTubeVideos(query) {
@@ -40,12 +40,12 @@ class App extends React.Component {
       key: this.props.API_KEY,
       query: query
     };
-    this.props.searchYouTube(options, (videos) => {
+    this.props.searchYouTube(options, (videos) =>
       this.setState({
         videos: videos,
         currentVideo: videos[0]
       })
-    });
+    );
   }
 
   handleVideoListEntryTitleClick(video) {
@@ -59,7 +59,7 @@ class App extends React.Component {
       <div>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
-            <div><h5><em>search</em> view goes here</h5></div>
+            <Search handleSearchInputChange={this.getYouTubeVideos.bind(this)}/>
           </div>
         </nav>
         <div className="row">
